@@ -7,18 +7,18 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 
 import controller.ControladorTela;
-import model.Campo;
 
 public class ListenerExternalCamposTela implements ActionListener{
 	private int index;
 	private int index2;
 	private ArrayList<String[]> c;
 	private JButton bt;
-	private Tela tela;
+	private JFrame tela;
 	
-	public ListenerExternalCamposTela(int i, int j, ArrayList<String[]> cp, JButton b, Tela t) {
+	public ListenerExternalCamposTela(int i, int j, ArrayList<String[]> cp, JButton b, JFrame t) {
 		index = i;
 		index2 = j;
 		c = cp;
@@ -49,7 +49,7 @@ public class ListenerExternalCamposTela implements ActionListener{
 		bt.setEnabled(false);
 		
 		if(ct.getAcertos() == 71)
-			JOptionPane.showMessageDialog(null, "VOCÊ GANHOU BEBER");
+			JOptionPane.showMessageDialog(null, "VOCÃŠ GANHOU BEBER");
 			
 	}
 	
