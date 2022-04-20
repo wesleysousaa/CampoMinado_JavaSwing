@@ -18,7 +18,7 @@ public class Tela extends JFrame{
 	public Tela() {
 		campo  = c.invocarCampo();
 		isDerrota = c.isDerrota();
-		setTitle("Campo Mimado");
+		setTitle("Campo Minado");
 		setResizable(false);
 		setLayout(null);
 		setSize(573,650);
