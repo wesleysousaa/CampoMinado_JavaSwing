@@ -30,7 +30,7 @@ public class ListenerExternalCamposTela implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		ControladorTela ct = new ControladorTela();
 		if(c.get(index)[index2].equals("B")) {
-			
+			JOptionPane.showMessageDialog(null, "BOMMMM!");
 			bt.setBackground(Color.red);
 			bt.setText(c.get(index)[index2]);
 			ct.setDerrota(true);
@@ -48,8 +48,13 @@ public class ListenerExternalCamposTela implements ActionListener{
 		bt.setBorder(null);
 		bt.setEnabled(false);
 		
-		if(ct.getAcertos() == 71)
+		if(ct.getAcertos() == 71) {
 			JOptionPane.showMessageDialog(null, "VOCÊ GANHOU BEBER");
+			ct.setDerrota(true);
+			tela.dispose();
+			new Tela();
+		}
+			
 			
 	}
 	
