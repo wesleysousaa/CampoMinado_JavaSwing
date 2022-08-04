@@ -59,83 +59,40 @@ public class ListenerExternalCamposTela implements ActionListener{
 			new Tela();
 		}	
 	}
+	public void setar(int i, int j) {
+		bts.get(i)[j].setBackground(Color.white);
+		bts.get(i)[j].setText(c.get(i)[j]);
+		bts.get(i)[j].setBorder(null);
+		bts.get(i)[j].setEnabled(false);
+		ct.setAcertos(ct.getAcertos()+1);
+	}
 	
 	public void abrirCampos() {
 		for(int i = 0; i < bts.size(); i++) {
 			for(int j = 0; j < bts.get(i).length; j++) {
 				if(bts.get(i)[j].getBackground() == Color.white && c.get(i)[j].equals(" ")) {
-					try {
-						if(!c.get(i-1)[j-1].equals("B") && c.get(i-1)[j-1].equals(" ")) {
-							bts.get(i-1)[j-1].setBackground(Color.white);
-							bts.get(i-1)[j-1].setText(c.get(i-1)[j-1]);
-							bts.get(i-1)[j-1].setBorder(null);
-							bts.get(i-1)[j-1].setEnabled(false);
-							ct.setAcertos(ct.getAcertos()+1);
-						}
+					try {if(!c.get(i-1)[j-1].equals("B") && c.get(i-1)[j-1].equals(" ")) {setar(i-1, j-1);}
 					}catch(Exception e) {}
-					try {
-						if(!c.get(i-1)[j].equals("B")) {
-							bts.get(i-1)[j].setBackground(Color.white);
-							bts.get(i-1)[j].setText(c.get(i-1)[j]);
-							bts.get(i-1)[j].setBorder(null);
-							bts.get(i-1)[j].setEnabled(false);
-							ct.setAcertos(ct.getAcertos()+1);
-						}	
+					
+					try {if(!c.get(i-1)[j].equals("B")) {setar(i-1, j);}	
 					}catch(Exception e) {}
-					try {
-						if(!c.get(i-1)[j+1].equals("B") && c.get(i-1)[j+1].equals(" ")) {
-							bts.get(i-1)[j+1].setBackground(Color.white);
-							bts.get(i-1)[j+1].setText(c.get(i-1)[j+1]);
-							bts.get(i-1)[j+1].setBorder(null);
-							bts.get(i-1)[j+1].setEnabled(false);
-							ct.setAcertos(ct.getAcertos()+1);
-							
-						}	
+					
+					try {if(!c.get(i-1)[j+1].equals("B") && c.get(i-1)[j+1].equals(" ")) {setar(i-1, j+1);}	
 					}catch(Exception e) {}
-					try {
-						if(!c.get(i)[j-1].equals("B")) {
-							bts.get(i)[j-1].setBackground(Color.white);
-							bts.get(i)[j-1].setText(c.get(i)[j-1]);
-							bts.get(i)[j-1].setBorder(null);
-							bts.get(i)[j-1].setEnabled(false);
-							ct.setAcertos(ct.getAcertos()+1);
-						}	
+					
+					try {if(!c.get(i)[j-1].equals("B")) {setar(i, j-1);}	
 					}catch(Exception e) {}
-					try {
-						if(!c.get(i)[j+1].equals("B")) {
-							bts.get(i)[j+1].setBackground(Color.white);
-							bts.get(i)[j+1].setText(c.get(i)[j+1]);
-							bts.get(i)[j+1].setBorder(null);
-							bts.get(i)[j+1].setEnabled(false);
-							ct.setAcertos(ct.getAcertos()+1);
-						}	
+					
+					try {if(!c.get(i)[j+1].equals("B")) {setar(i, j+1);}	
 					}catch(Exception e) {}
-					try {
-						if(!c.get(i+1)[j-1].equals("B") && c.get(i+1)[j-1].equals(" ")) {
-							bts.get(i+1)[j-1].setBackground(Color.white);
-							bts.get(i+1)[j-1].setText(c.get(i+1)[j-1]);
-							bts.get(i+1)[j-1].setBorder(null);
-							bts.get(i+1)[j-1].setEnabled(false);
-							ct.setAcertos(ct.getAcertos()+1);
-						}	
+					
+					try {if(!c.get(i+1)[j-1].equals("B") && c.get(i+1)[j-1].equals(" ")) {setar(i+1, j-1);}	
 					}catch(Exception e) {}
-					try {
-						if(!c.get(i+1)[j].equals("B")) {
-							bts.get(i+1)[j].setBackground(Color.white);
-							bts.get(i+1)[j].setText(c.get(i+1)[j]);
-							bts.get(i+1)[j].setBorder(null);
-							bts.get(i+1)[j].setEnabled(false);
-							ct.setAcertos(ct.getAcertos()+1);
-						}	
+					
+					try {if(!c.get(i+1)[j].equals("B")) {setar(i+1, j);}	
 					}catch(Exception e) {}
-					try {
-						if(!c.get(i+1)[j+1].equals("B") && c.get(i+1)[j+1].equals(" ")) {
-							bts.get(i+1)[j+1].setBackground(Color.white);
-							bts.get(i+1)[j+1].setText(c.get(i+1)[j+1]);
-							bts.get(i+1)[j+1].setBorder(null);
-							bts.get(i+1)[j+1].setEnabled(false);
-							ct.setAcertos(ct.getAcertos()+1);
-						}	
+					
+					try {if(!c.get(i+1)[j+1].equals("B") && c.get(i+1)[j+1].equals(" ")) {setar(i+1, j+1);}	
 					}catch(Exception e) {}
 				}
 			}
