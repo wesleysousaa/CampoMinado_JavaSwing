@@ -52,13 +52,13 @@ public class ListenerExternalCamposTela implements MouseListener{
 		for(int i = 0; i < bts.size(); i++) {
 			for(int j = 0; j < bts.get(i).length; j++) {
 				if(bts.get(i)[j].getBackground() == Color.white && c.get(i)[j].equals(" ")) {
-					try {if(!c.get(i-1)[j-1].equals("B") && c.get(i-1)[j-1].equals(" ")) {setar(i-1, j-1);}
+					try {if(!c.get(i-1)[j-1].equals("B") && c.get(i-1)[j-1].equals(" ") && bts.get(i-1)[j-1].getIcon() == null) {setar(i-1, j-1);}
 					}catch(Exception e) {}
 					
 					try {if(!c.get(i-1)[j].equals("B")) {setar(i-1, j);}	
 					}catch(Exception e) {}
 					
-					try {if(!c.get(i-1)[j+1].equals("B") && c.get(i-1)[j+1].equals(" ")) {setar(i-1, j+1);}	
+					try {if(!c.get(i-1)[j+1].equals("B") && c.get(i-1)[j+1].equals(" ") && bts.get(i-1)[j+1].getIcon() == null) {setar(i-1, j+1);}	
 					}catch(Exception e) {}
 					
 					try {if(!c.get(i)[j-1].equals("B")) {setar(i, j-1);}	
@@ -67,13 +67,13 @@ public class ListenerExternalCamposTela implements MouseListener{
 					try {if(!c.get(i)[j+1].equals("B")) {setar(i, j+1);}	
 					}catch(Exception e) {}
 					
-					try {if(!c.get(i+1)[j-1].equals("B") && c.get(i+1)[j-1].equals(" ")) {setar(i+1, j-1);}	
+					try {if(!c.get(i+1)[j-1].equals("B") && c.get(i+1)[j-1].equals(" ") && bts.get(i+1)[j-1].getIcon() == null) {setar(i+1, j-1);}	
 					}catch(Exception e) {}
 					
 					try {if(!c.get(i+1)[j].equals("B")) {setar(i+1, j);}	
 					}catch(Exception e) {}
 					
-					try {if(!c.get(i+1)[j+1].equals("B") && c.get(i+1)[j+1].equals(" ")) {setar(i+1, j+1);}	
+					try {if(!c.get(i+1)[j+1].equals("B") && c.get(i+1)[j+1].equals(" ") && bts.get(i+1)[j+1].getIcon() == null) {setar(i+1, j+1);}	
 					}catch(Exception e) {}
 				}
 			}
