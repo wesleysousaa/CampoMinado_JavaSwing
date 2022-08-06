@@ -2,19 +2,27 @@ package view;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Image;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import controller.ControladorTela;
 
 public class Tela extends JFrame{
+	
 	private ControladorTela c = new ControladorTela();
 	private ArrayList<String[]> campo;
 	private boolean isDerrota;
 	private ArrayList<JButton[]> bts;
+	private Image bomb;
 	
 	public Tela() {
+		try {bomb = ImageIO.read(getClass().getResource("/img/bomb.png"));} 
+		catch(Exception ex) {ex.printStackTrace();}
 		campo  = c.invocarCampo();
 		isDerrota = c.isDerrota();
 		bts = new ArrayList<JButton[]>();
@@ -39,13 +47,18 @@ public class Tela extends JFrame{
 				bt.setBounds(y, x, 60, 60);
 				bt.setBackground(Color.gray);
 				if(isDerrota) {
-					bt.setText(campo.get(i)[j]);
-					bt.setBackground(campo.get(i)[j].equals("B") ? Color.red : Color.white);
+					if(campo.get(i)[j].equals("B")) 
+						bt.setIcon(new ImageIcon(bomb));
+					else 
+						bt.setText(campo.get(i)[j]);
+					bt.setBackground(Color.white);
 					bt.setEnabled(false);
+					
 				}
+				bt.setToolTipText("Botão direito para sinalizar ou remover bomba");
 				bt.setBorder(null);
-				
-				bt.addActionListener(new ListenerExternalCamposTela(i,j,campo, bt, this, bts));
+				bt.setCursor(new Cursor(Cursor.HAND_CURSOR));
+				bt.addMouseListener(new ListenerExternalCamposTela(i,j,campo, bt, this, bts));
 				
 				linhaBts[j] = bt;
 				add(bt);
