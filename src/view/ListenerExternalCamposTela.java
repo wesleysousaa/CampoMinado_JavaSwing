@@ -98,7 +98,7 @@ public class ListenerExternalCamposTela implements MouseListener{
 			if(bt.getIcon() == null) {
 				bt.setIcon(new ImageIcon(flag));
 			}else {
-				bt.setIcon(null);
+				bt.setEnabled(true);
 			}
 		}else {
 			if(bt.getIcon() == null) {
