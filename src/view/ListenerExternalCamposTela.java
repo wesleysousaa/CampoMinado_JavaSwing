@@ -2,14 +2,11 @@ package view;
 
 import java.awt.Color;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -35,6 +32,7 @@ public class ListenerExternalCamposTela implements MouseListener{
 		tela = t;
 		this.bts = bts;
 		
+		
 		try {flag = ImageIO.read(getClass().getResource("/img/flag.png"));} 
 		catch(Exception ex) {ex.printStackTrace();}
 	}
@@ -52,13 +50,13 @@ public class ListenerExternalCamposTela implements MouseListener{
 		for(int i = 0; i < bts.size(); i++) {
 			for(int j = 0; j < bts.get(i).length; j++) {
 				if(bts.get(i)[j].getBackground() == Color.white && c.get(i)[j].equals(" ")) {
-					try {if(!c.get(i-1)[j-1].equals("B") && c.get(i-1)[j-1].equals(" ") && bts.get(i-1)[j-1].getIcon() == null) {setar(i-1, j-1);}
+					try {if(!c.get(i-1)[j-1].equals("B") && c.get(i-1)[j-1].equals(" ")) {setar(i-1, j-1);}
 					}catch(Exception e) {}
 					
 					try {if(!c.get(i-1)[j].equals("B")) {setar(i-1, j);}	
 					}catch(Exception e) {}
 					
-					try {if(!c.get(i-1)[j+1].equals("B") && c.get(i-1)[j+1].equals(" ") && bts.get(i-1)[j+1].getIcon() == null) {setar(i-1, j+1);}	
+					try {if(!c.get(i-1)[j+1].equals("B") && c.get(i-1)[j+1].equals(" ")) {setar(i-1, j+1);}	
 					}catch(Exception e) {}
 					
 					try {if(!c.get(i)[j-1].equals("B")) {setar(i, j-1);}	
@@ -67,17 +65,19 @@ public class ListenerExternalCamposTela implements MouseListener{
 					try {if(!c.get(i)[j+1].equals("B")) {setar(i, j+1);}	
 					}catch(Exception e) {}
 					
-					try {if(!c.get(i+1)[j-1].equals("B") && c.get(i+1)[j-1].equals(" ") && bts.get(i+1)[j-1].getIcon() == null) {setar(i+1, j-1);}	
+					try {if(!c.get(i+1)[j-1].equals("B") && c.get(i+1)[j-1].equals(" ")) {setar(i+1, j-1);}	
 					}catch(Exception e) {}
 					
 					try {if(!c.get(i+1)[j].equals("B")) {setar(i+1, j);}	
 					}catch(Exception e) {}
 					
-					try {if(!c.get(i+1)[j+1].equals("B") && c.get(i+1)[j+1].equals(" ") && bts.get(i+1)[j+1].getIcon() == null) {setar(i+1, j+1);}	
+					try {if(!c.get(i+1)[j+1].equals("B") && c.get(i+1)[j+1].equals(" ")) {setar(i+1, j+1);}	
 					}catch(Exception e) {}
 				}
 			}
 		}
+		
+		
 	}
 	private int refreshAcertos() {
 		int cont = 0;
@@ -92,17 +92,16 @@ public class ListenerExternalCamposTela implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		this.ct = new ControladorTela();
+		
 		
 		if(e.getButton() == MouseEvent.BUTTON3) {
-			
-			if(bt.getIcon() == null) {
-				bt.setIcon(new ImageIcon(flag));
-			}else {
-				bt.setIcon(null);
+			if(!(bt.getBackground() == Color.white)) {
+				if(bt.getIcon() == null) bt.setIcon(new ImageIcon(flag));
+				else bt.setIcon(null);
 			}
 		}else {
 			if(bt.getIcon() == null) {
-				ct = new ControladorTela();
 				if(c.get(index)[index2].equals("B")) {
 					JOptionPane.showMessageDialog(null, "BOMMMM!");
 					bt.setText(c.get(index)[index2]);
@@ -114,18 +113,20 @@ public class ListenerExternalCamposTela implements MouseListener{
 					
 					bt.setBackground(Color.white);
 					bt.setText(c.get(index)[index2]);
-					ct.setAcertos(ct.getAcertos()+1);
+					ct.setAcertos(ct.getAcertos());
 					for(int i = 0; i < 20; i++)
 						abrirCampos();
 				}
-				ct.setAcertos(refreshAcertos());
+				
 				bt.setBorder(null);
 				bt.setEnabled(false);
+				ct.setAcertos(this.refreshAcertos());
 				
-				if(ct.getAcertos() > 71) {
+				if(ct.getAcertos() == 71) {
 					JOptionPane.showMessageDialog(null, "VOCÊ GANHOU BEBER");
 					ct.setDerrota(true);
 					tela.dispose();
+					ct.setAcertos(0);
 					new Tela();
 				}
 			}

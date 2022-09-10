@@ -39,7 +39,8 @@ public class Campo {
 	}
 	
 	private ArrayList<String[]> addElementos() {
-		for(int i = 0; i < bombas; i++) {
+		
+		while(!(bombsInCamp())) {
 			int index1  = (int) (Math.random() * 8);
 			int index2  = (int) (Math.random() * 8);
 			campo.get(index1)[index2] = "B";
@@ -73,9 +74,18 @@ public class Campo {
 				c=0;
 			}
 		}
-		
 		return campo;
-		
+	}
+	
+	public boolean bombsInCamp() {
+		int c = 0;
+		for(int i = 0; i < campo.size(); i++) {
+			for(int j = 0; j < campo.get(i).length; j++) {
+				if(campo.get(i)[j] != null && campo.get(i)[j].equals("B"))
+					c ++;
+			}
+		}
+		return c == this.bombas;
 	}
 	
 	public ArrayList<String[]> getCampo(){
